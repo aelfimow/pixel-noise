@@ -116,19 +116,17 @@ void MainWindow::Show()
 void MainWindow::Run()
 {
     MSG msg;
-    auto msgres = ::GetMessage(&msg, nullptr, 0, 0);
+    bool done = false;
 
-    while ((msgres != 0) && (msgres != -1))
+    while (!done)
     {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
+        if (0 != ::PeekMessage(&msg, NULL, 0u, 0u, PM_REMOVE))
+        {
+            done = (WM_QUIT == msg.message);
 
-        msgres = ::GetMessage(&msg, nullptr, 0, 0);
-    }
-
-    if (msgres == -1)
-    {
-        MessageBox_Error(TEXT("Error in GetMessage"));
+            ::TranslateMessage(&msg);
+            ::DispatchMessage(&msg);
+        }
     }
 }
 
