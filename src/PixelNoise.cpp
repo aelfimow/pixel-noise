@@ -2,6 +2,11 @@
 
 #include "PixelNoise.h"
 
+PixelNoise *PixelNoise::Inst = nullptr;
+
+PixelNoise::PixelNoise()
+{
+}
 
 PixelNoise::~PixelNoise()
 {
@@ -9,6 +14,8 @@ PixelNoise::~PixelNoise()
 
 void PixelNoise::Create()
 {
+    delete Inst;
+    Inst = new PixelNoise;
 }
 
 void PixelNoise::Draw(HWND hwnd)
@@ -27,4 +34,5 @@ void PixelNoise::Draw(HWND hwnd)
 
 void PixelNoise::Destroy()
 {
+    delete Inst;
 }

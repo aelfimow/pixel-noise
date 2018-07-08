@@ -13,8 +13,11 @@ class PixelNoise
         static void Draw(HWND hwnd);
         static void Destroy();
 
+    private:
+        PixelNoise();
+        static PixelNoise *Inst;
+
     public:
-        PixelNoise() = delete;
         PixelNoise(const PixelNoise &instance) = delete;
         PixelNoise(const PixelNoise &&instance) = delete;
         PixelNoise &operator=(const PixelNoise &instance) = delete;
