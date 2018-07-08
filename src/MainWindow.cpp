@@ -115,11 +115,12 @@ void MainWindow::Show()
 
 void MainWindow::Run()
 {
-    MSG msg;
     bool done = false;
 
     while (!done)
     {
+        MSG msg;
+
         if (0 != ::PeekMessage(&msg, NULL, 0u, 0u, PM_REMOVE))
         {
             done = (WM_QUIT == msg.message);
