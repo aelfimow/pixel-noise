@@ -2,6 +2,7 @@
 
 #include "WndProcHandler.h"
 #include "WM_CREATE_Handler.h"
+#include "PixelNoise.h"
 
 
 WM_CREATE_Handler::WM_CREATE_Handler() :
@@ -15,5 +16,6 @@ WM_CREATE_Handler::~WM_CREATE_Handler()
 
 LRESULT WM_CREATE_Handler::operator()([[maybe_unused]] HWND hwnd, [[maybe_unused]] WPARAM wParam, [[maybe_unused]] LPARAM lParam)
 {
+    PixelNoise::Create();
     return 0;
 }
