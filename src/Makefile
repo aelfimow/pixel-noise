@@ -15,9 +15,11 @@ OBJ_FILES += c.o
 OBJ_FILES += d.o
 OBJ_FILES += e.o
 OBJ_FILES += f.o
+OBJ_FILES += g.o
 
 all:
-	${CXX} -c PixelNoise.cpp -o f.o ${CXXFLAGS}
+	${CXX} -c PixelNoise.cpp -o g.o ${CXXFLAGS}
+	${CXX} -c WM_SIZE_Handler.cpp -o f.o ${CXXFLAGS}
 	${CXX} -c WM_CREATE_Handler.cpp -o e.o ${CXXFLAGS}
 	${CXX} -c WM_COMMAND_Handler.cpp -o d.o ${CXXFLAGS}
 	${CXX} -c WM_DESTROY_Handler.cpp -o c.o ${CXXFLAGS}
