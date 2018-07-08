@@ -4,6 +4,7 @@
 #include "main.h"
 #include "MainWindow.h"
 #include "WndProcHandler.h"
+#include "WM_SIZE_Handler.h"
 #include "WM_CREATE_Handler.h"
 #include "WM_COMMAND_Handler.h"
 #include "WM_DESTROY_Handler.h"
@@ -63,6 +64,7 @@ void MainWindow::Create(HINSTANCE hInstance, int iCmdShow)
 
 void MainWindow::Show()
 {
+    Inst->m_WndProcMap[WM_SIZE]    = new WM_SIZE_Handler;
     Inst->m_WndProcMap[WM_CREATE]  = new WM_CREATE_Handler;
     Inst->m_WndProcMap[WM_COMMAND] = new WM_COMMAND_Handler;
     Inst->m_WndProcMap[WM_DESTROY] = new WM_DESTROY_Handler;
