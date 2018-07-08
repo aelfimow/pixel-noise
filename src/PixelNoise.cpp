@@ -4,7 +4,9 @@
 
 PixelNoise *PixelNoise::Inst = nullptr;
 
-PixelNoise::PixelNoise()
+PixelNoise::PixelNoise() :
+    m_WindowX { 0 },
+    m_WindowY { 0 }
 {
 }
 
@@ -18,12 +20,21 @@ void PixelNoise::Create()
     Inst = new PixelNoise;
 }
 
+void PixelNoise::Set(int x, int y)
+{
+    Inst->m_WindowX = x;
+    Inst->m_WindowY = y;
+}
+
 void PixelNoise::Draw(HWND hwnd)
 {
     auto hdc = ::GetDC(hwnd);
 
-    int x = (rand() % 100);
-    int y = (rand() % 100);
+    bool xLimitValid = (Inst->m_WindowX != 0);
+    int x = xLimitValid ? (rand() % Inst->m_WindowX) : 0;
+
+    bool yLimitValid = (Inst->m_WindowY != 0);
+    int y = yLimitValid ? (rand() % Inst->m_WindowY) : 0;
 
     COLORREF rgb = RGB((rand() % 256u), (rand() % 256u), (rand() % 256u));
 
@@ -35,4 +46,5 @@ void PixelNoise::Draw(HWND hwnd)
 void PixelNoise::Destroy()
 {
     delete Inst;
+    Inst = nullptr;
 }
