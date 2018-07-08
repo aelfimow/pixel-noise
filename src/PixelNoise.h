@@ -10,7 +10,7 @@ class PixelNoise
 
     public:
         static void Create();
-        static void Draw();
+        static void Draw(HWND hwnd);
         static void Destroy();
 
     public:

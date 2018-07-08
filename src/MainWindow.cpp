@@ -133,7 +133,7 @@ void MainWindow::Run()
         }
         else
         {
-            PixelNoise::Draw();
+            PixelNoise::Draw(Inst->m_hWindow);
         }
     }
 }
