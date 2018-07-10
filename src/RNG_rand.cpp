@@ -16,6 +16,18 @@ RNG_rand::~RNG_rand()
 {
 }
 
+void RNG_rand::limit_x(int min, int max) const
+{
+    m_min_x = min;
+    m_max_x = max;
+}
+
+void RNG_rand::limit_y(int min, int max) const
+{
+    m_min_y = min;
+    m_max_y = max;
+}
+
 int RNG_rand::x() const
 {
     auto diff = (m_max_x - m_min_x) + 1;
