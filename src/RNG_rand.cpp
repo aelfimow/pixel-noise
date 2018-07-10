@@ -1,5 +1,8 @@
+#include <Windows.h>
+
 #include "RNG.h"
 #include "RNG_rand.h"
+
 
 RNG_rand::RNG_rand() :
     m_min_x { 0 },
@@ -31,19 +34,19 @@ int RNG_rand::y() const
     return (m_min_y + r);
 }
 
-uint8_t RNG_rand::red() const
+int RNG_rand::red() const
 {
     auto r = rand() % 256;
     return r;
 }
 
-uint8_t RNG_rand::green() const
+int RNG_rand::green() const
 {
     auto r = rand() % 256;
     return r;
 }
 
-uint8_t RNG_rand::blue() const
+int RNG_rand::blue() const
 {
     auto r = rand() % 256;
     return r;

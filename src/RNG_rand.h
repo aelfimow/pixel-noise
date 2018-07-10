@@ -12,9 +12,9 @@ class RNG_rand : public RNG
         int x() const override;
         int y() const override;
 
-        uint8_t red() const override;
-        uint8_t green() const override;
-        uint8_t blue() const override;
+        int red() const override;
+        int green() const override;
+        int blue() const override;
 
     private:
         int m_min_x;
