@@ -9,8 +9,8 @@ class RNG_rand : public RNG
         RNG_rand();
         ~RNG_rand();
 
-        void limit_x(int min, int max) const override;
-        void limit_y(int min, int max) const override;
+        void limit_x(int min, int max) override;
+        void limit_y(int min, int max) override;
 
         int x() const override;
         int y() const override;
