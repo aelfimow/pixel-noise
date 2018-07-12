@@ -26,6 +26,14 @@ class RNG_rand : public RNG
         int m_max_x;
         int m_min_y;
         int m_max_y;
+        int m_x;
+        int m_y;
+        int m_red;
+        int m_green;
+        int m_blue;
+
+    private:
+        bool is_range_valid(int min, int max) const;
 };
 
 #endif
