@@ -24,10 +24,10 @@ void PixelNoise::Create()
     Inst = new PixelNoise;
 }
 
-void PixelNoise::Set(int x, int y)
+void PixelNoise::SetLimit(int max_x, int max_y)
 {
-    Inst->m_RNG->limit_x(0, x);
-    Inst->m_RNG->limit_y(0, y);
+    Inst->m_RNG->limit_x(0, max_x);
+    Inst->m_RNG->limit_y(0, max_y);
 }
 
 void PixelNoise::Draw(HWND hwnd)

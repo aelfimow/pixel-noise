@@ -16,10 +16,10 @@ WM_SIZE_Handler::~WM_SIZE_Handler()
 
 LRESULT WM_SIZE_Handler::operator()([[maybe_unused]] HWND hwnd, [[maybe_unused]] WPARAM wParam, LPARAM lParam)
 {
-    int x = LOWORD(lParam);
-    int y = HIWORD(lParam);
+    int max_x = LOWORD(lParam);
+    int max_y = HIWORD(lParam);
 
-    PixelNoise::Set(x, y);
+    PixelNoise::SetLimit(max_x, max_y);
 
     return 0;
 }

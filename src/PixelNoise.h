@@ -12,7 +12,7 @@ class PixelNoise
 
     public:
         static void Create();
-        static void Set(int x, int y);
+        static void SetLimit(int max_x, int max_y);
         static void Draw(HWND hwnd);
         static void Destroy();
 
