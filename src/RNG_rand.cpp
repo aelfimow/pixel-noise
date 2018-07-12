@@ -1,4 +1,4 @@
-#include <Windows.h>
+#include <cstdlib>
 
 #include "RNG.h"
 #include "RNG_rand.h"
@@ -13,6 +13,10 @@ RNG_rand::RNG_rand() :
 }
 
 RNG_rand::~RNG_rand()
+{
+}
+
+void RNG_rand::calc()
 {
 }
 

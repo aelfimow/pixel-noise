@@ -9,6 +9,8 @@ class RNG
         RNG() { }
         virtual ~RNG() { }
 
+        virtual void calc() = 0;
+
         virtual void limit_x(int min, int max) = 0;
         virtual void limit_y(int min, int max) = 0;
 
