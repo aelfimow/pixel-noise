@@ -3,6 +3,8 @@
 #else
 #define PIXEL_NOISE_H
 
+class RNG;
+
 class PixelNoise
 {
     public:
@@ -18,8 +20,7 @@ class PixelNoise
         PixelNoise();
         static PixelNoise *Inst;
 
-        int m_WindowX;
-        int m_WindowY;
+        RNG *m_RNG;
 
     public:
         PixelNoise(const PixelNoise &instance) = delete;

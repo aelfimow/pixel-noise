@@ -2,16 +2,20 @@
 
 #include "PixelNoise.h"
 
+#include "RNG.h"
+#include "RNG_rand.h"
+
+
 PixelNoise *PixelNoise::Inst = nullptr;
 
 PixelNoise::PixelNoise() :
-    m_WindowX { 0 },
-    m_WindowY { 0 }
+    m_RNG { new RNG_rand }
 {
 }
 
 PixelNoise::~PixelNoise()
 {
+    delete m_RNG;
 }
 
 void PixelNoise::Create()
@@ -22,25 +26,30 @@ void PixelNoise::Create()
 
 void PixelNoise::Set(int x, int y)
 {
-    Inst->m_WindowX = x;
-    Inst->m_WindowY = y;
+    Inst->m_RNG->limit_x(0, x);
+    Inst->m_RNG->limit_y(0, y);
 }
 
 void PixelNoise::Draw(HWND hwnd)
 {
+    RNG *pRNG = Inst->m_RNG;
+
+    pRNG->calc();
+
     auto hdc = ::GetDC(hwnd);
+    {
+        int x = pRNG->x();
+        int y = pRNG->y();
 
-    bool xLimitValid = (Inst->m_WindowX != 0);
-    int x = xLimitValid ? (rand() % Inst->m_WindowX) : 0;
+        int red   = pRNG->red();
+        int green = pRNG->green();
+        int blue  = pRNG->blue();
 
-    bool yLimitValid = (Inst->m_WindowY != 0);
-    int y = yLimitValid ? (rand() % Inst->m_WindowY) : 0;
+        COLORREF rgb = RGB(red, green, blue);
 
-    COLORREF rgb = RGB((rand() % 256u), (rand() % 256u), (rand() % 256u));
-
-    ::SetPixel(hdc, x, y, rgb);
-
-    ReleaseDC(hwnd, hdc);
+        ::SetPixel(hdc, x, y, rgb);
+    }
+    ::ReleaseDC(hwnd, hdc);
 }
 
 void PixelNoise::Destroy()
