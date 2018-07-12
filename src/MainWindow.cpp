@@ -35,17 +35,23 @@ MainWindow::~MainWindow()
 
 HMENU MainWindow::MainWindowMenu()
 {
-    auto hFileMenu = CreateMenu();
+    auto hCtrlMenu = ::CreateMenu();
     {
-        (void)AppendMenu(hFileMenu, MF_STRING, IDM_APP_START, TEXT("Start"));
-        (void)AppendMenu(hFileMenu, MF_STRING, IDM_APP_STOP, TEXT("Stop"));
-        (void)AppendMenu(hFileMenu, MF_SEPARATOR, 0, nullptr);
-        (void)AppendMenu(hFileMenu, MF_STRING, IDM_APP_EXIT, TEXT("&Exit"));
+        ::AppendMenu(hCtrlMenu, MF_STRING, IDM_APP_START, TEXT("Start"));
+        ::AppendMenu(hCtrlMenu, MF_STRING, IDM_APP_STOP, TEXT("Stop"));
+        ::AppendMenu(hCtrlMenu, MF_SEPARATOR, 0, nullptr);
+        ::AppendMenu(hCtrlMenu, MF_STRING, IDM_APP_EXIT, TEXT("&Exit"));
     }
 
-    auto hMenu = CreateMenu();
+    auto hRNGMenu = ::CreateMenu();
     {
-        (void)AppendMenu(hMenu, MF_POPUP, (UINT_PTR)hFileMenu, TEXT("&File"));
+        ::AppendMenu(hRNGMenu, MF_STRING, IDM_RNG_RAND, TEXT("rand()"));
+    }
+
+    auto hMenu = ::CreateMenu();
+    {
+        ::AppendMenu(hMenu, MF_POPUP, (UINT_PTR)hCtrlMenu, TEXT("&Control"));
+        ::AppendMenu(hMenu, MF_POPUP, (UINT_PTR)hRNGMenu, TEXT("&RNG"));
     }
 
     return hMenu;
