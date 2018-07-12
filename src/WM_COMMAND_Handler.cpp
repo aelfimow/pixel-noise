@@ -2,12 +2,12 @@
 
 #include "WndProcHandler.h"
 #include "WM_COMMAND_Handler.h"
+#include "PixelNoise.h"
 #include "main.h"
 
 
 WM_COMMAND_Handler::WM_COMMAND_Handler() :
-    WndProcHandler {},
-    m_TimerID { 1 }
+    WndProcHandler {}
 {
 }
 
@@ -21,11 +21,13 @@ LRESULT WM_COMMAND_Handler::operator()(HWND hwnd, WPARAM wParam, [[maybe_unused]
 
     if (IDM_APP_START == cmd)
     {
+        PixelNoise::Start();
         return 0;
     }
 
     if (IDM_APP_STOP == cmd)
     {
+        PixelNoise::Stop();
         return 0;
     }
 

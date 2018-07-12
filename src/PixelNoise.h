@@ -12,6 +12,8 @@ class PixelNoise
 
     public:
         static void Create();
+        static void Start();
+        static void Stop();
         static void SetLimit(int max_x, int max_y);
         static void Draw(HWND hwnd);
         static void Destroy();
@@ -21,6 +23,8 @@ class PixelNoise
         static PixelNoise *Inst;
 
         RNG *m_RNG;
+
+        bool m_is_started;
 
     public:
         PixelNoise(const PixelNoise &instance) = delete;

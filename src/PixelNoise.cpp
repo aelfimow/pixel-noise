@@ -9,7 +9,8 @@
 PixelNoise *PixelNoise::Inst = nullptr;
 
 PixelNoise::PixelNoise() :
-    m_RNG { new RNG_rand }
+    m_RNG { new RNG_rand },
+    m_is_started { true }
 {
 }
 
@@ -24,6 +25,16 @@ void PixelNoise::Create()
     Inst = new PixelNoise;
 }
 
+void PixelNoise::Start()
+{
+    Inst->m_is_started = true;
+}
+
+void PixelNoise::Stop()
+{
+    Inst->m_is_started = false;
+}
+
 void PixelNoise::SetLimit(int max_x, int max_y)
 {
     Inst->m_RNG->limit_x(0, max_x);
@@ -32,6 +43,11 @@ void PixelNoise::SetLimit(int max_x, int max_y)
 
 void PixelNoise::Draw(HWND hwnd)
 {
+    if (!Inst->m_is_started)
+    {
+        return;
+    }
+
     RNG *pRNG = Inst->m_RNG;
 
     pRNG->calc();
