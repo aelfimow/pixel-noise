@@ -39,11 +39,15 @@ LRESULT WM_COMMAND_Handler::operator()(HWND hwnd, WPARAM wParam, [[maybe_unused]
 
     if (IDM_RNG_RAND == cmd)
     {
+        ::InvalidateRect(hwnd, nullptr, TRUE);
+        PixelNoise::RNG_rand();
         return 0;
     }
 
     if (IDM_RNG_XORSHIFT == cmd)
     {
+        ::InvalidateRect(hwnd, nullptr, TRUE);
+        PixelNoise::RNG_xorshift();
         return 0;
     }
 

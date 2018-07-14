@@ -18,6 +18,9 @@ class PixelNoise
         static void Draw(HWND hwnd);
         static void Destroy();
 
+        static void RNG_rand();
+        static void RNG_xorshift();
+
     private:
         PixelNoise();
         static PixelNoise *Inst;
@@ -25,6 +28,9 @@ class PixelNoise
         RNG *m_RNG;
 
         bool m_is_started;
+
+        int m_max_x;
+        int m_max_y;
 
     public:
         PixelNoise(const PixelNoise &instance) = delete;
