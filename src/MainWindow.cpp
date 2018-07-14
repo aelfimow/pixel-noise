@@ -8,6 +8,7 @@
 #include "WM_CREATE_Handler.h"
 #include "WM_COMMAND_Handler.h"
 #include "WM_DESTROY_Handler.h"
+#include "WM_PAINT_Handler.h"
 #include "PixelNoise.h"
 
 
@@ -39,6 +40,7 @@ HMENU MainWindow::MainWindowMenu()
     {
         ::AppendMenu(hCtrlMenu, MF_STRING, IDM_APP_START, TEXT("Start"));
         ::AppendMenu(hCtrlMenu, MF_STRING, IDM_APP_STOP, TEXT("Stop"));
+        ::AppendMenu(hCtrlMenu, MF_STRING, IDM_APP_CLEAR, TEXT("Clear"));
         ::AppendMenu(hCtrlMenu, MF_SEPARATOR, 0, nullptr);
         ::AppendMenu(hCtrlMenu, MF_STRING, IDM_APP_EXIT, TEXT("&Exit"));
     }
@@ -75,6 +77,7 @@ void MainWindow::Show()
     Inst->m_WndProcMap[WM_CREATE]  = new WM_CREATE_Handler;
     Inst->m_WndProcMap[WM_COMMAND] = new WM_COMMAND_Handler;
     Inst->m_WndProcMap[WM_DESTROY] = new WM_DESTROY_Handler;
+    Inst->m_WndProcMap[WM_PAINT]   = new WM_PAINT_Handler;
 
     Inst->m_Wndclass.style         = (CS_HREDRAW | CS_VREDRAW);
     Inst->m_Wndclass.lpfnWndProc   = WndProc;

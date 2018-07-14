@@ -31,6 +31,12 @@ LRESULT WM_COMMAND_Handler::operator()(HWND hwnd, WPARAM wParam, [[maybe_unused]
         return 0;
     }
 
+    if (IDM_APP_CLEAR == cmd)
+    {
+        ::InvalidateRect(hwnd, nullptr, TRUE);
+        return 0;
+    }
+
     if (IDM_RNG_RAND == cmd)
     {
         return 0;
