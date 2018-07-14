@@ -46,6 +46,7 @@ HMENU MainWindow::MainWindowMenu()
     auto hRNGMenu = ::CreateMenu();
     {
         ::AppendMenu(hRNGMenu, MF_STRING, IDM_RNG_RAND, TEXT("rand()"));
+        ::AppendMenu(hRNGMenu, MF_STRING, IDM_RNG_XORSHIFT, TEXT("xorshift()"));
     }
 
     auto hMenu = ::CreateMenu();

@@ -36,6 +36,11 @@ LRESULT WM_COMMAND_Handler::operator()(HWND hwnd, WPARAM wParam, [[maybe_unused]
         return 0;
     }
 
+    if (IDM_RNG_XORSHIFT == cmd)
+    {
+        return 0;
+    }
+
     if (IDM_APP_EXIT == cmd)
     {
         ::PostMessage(hwnd, WM_CLOSE, 0, 0);
