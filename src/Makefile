@@ -17,8 +17,10 @@ OBJ_FILES += e.o
 OBJ_FILES += f.o
 OBJ_FILES += g.o
 OBJ_FILES += h.o
+OBJ_FILES += i.o
 
 all:
+	${CXX} -c RNG_xorshift.cpp -o i.o ${CXXFLAGS}
 	${CXX} -c RNG_rand.cpp -o h.o ${CXXFLAGS}
 	${CXX} -c PixelNoise.cpp -o g.o ${CXXFLAGS}
 	${CXX} -c WM_SIZE_Handler.cpp -o f.o ${CXXFLAGS}
