@@ -1,5 +1,6 @@
 #include <Windows.h>
 
+#include "WndProcParam.h"
 #include "WndProcHandler.h"
 #include "WM_DESTROY_Handler.h"
 #include "PixelNoise.h"
@@ -14,7 +15,7 @@ WM_DESTROY_Handler::~WM_DESTROY_Handler()
 {
 }
 
-LRESULT WM_DESTROY_Handler::operator()([[maybe_unused]] HWND hwnd, [[maybe_unused]] WPARAM wParam, [[maybe_unused]] LPARAM lParam)
+LRESULT WM_DESTROY_Handler::operator()([[maybe_unused]] const WndProcParam &param)
 {
     PixelNoise::Destroy();
     PostQuitMessage(0);

@@ -9,7 +9,7 @@ class WM_DESTROY_Handler: public WndProcHandler
         WM_DESTROY_Handler();
         ~WM_DESTROY_Handler();
 
-        LRESULT operator()(HWND hwnd, WPARAM wParam, LPARAM lParam) override;
+        LRESULT operator()(const WndProcParam &param) override;
 
     public:
         WM_DESTROY_Handler(const WM_DESTROY_Handler &instance) = delete;

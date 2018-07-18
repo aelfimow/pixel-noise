@@ -9,7 +9,7 @@ class WM_PAINT_Handler: public WndProcHandler
         WM_PAINT_Handler();
         ~WM_PAINT_Handler();
 
-        LRESULT operator()(HWND hwnd, WPARAM wParam, LPARAM lParam) override;
+        LRESULT operator()(const WndProcParam &param) override;
 
     public:
         WM_PAINT_Handler(const WM_PAINT_Handler &instance) = delete;

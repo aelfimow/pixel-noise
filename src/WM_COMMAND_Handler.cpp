@@ -1,5 +1,6 @@
 #include <Windows.h>
 
+#include "WndProcParam.h"
 #include "WndProcHandler.h"
 #include "WM_COMMAND_Handler.h"
 #include "PixelNoise.h"
@@ -15,9 +16,9 @@ WM_COMMAND_Handler::~WM_COMMAND_Handler()
 {
 }
 
-LRESULT WM_COMMAND_Handler::operator()(HWND hwnd, WPARAM wParam, [[maybe_unused]] LPARAM lParam)
+LRESULT WM_COMMAND_Handler::operator()(const WndProcParam &param)
 {
-    auto cmd = LOWORD(wParam);
+    auto cmd = LOWORD(param.wParam());
 
     if (IDM_APP_START == cmd)
     {
@@ -33,27 +34,27 @@ LRESULT WM_COMMAND_Handler::operator()(HWND hwnd, WPARAM wParam, [[maybe_unused]
 
     if (IDM_APP_CLEAR == cmd)
     {
-        ::InvalidateRect(hwnd, nullptr, TRUE);
+        ::InvalidateRect(param.hwnd(), nullptr, TRUE);
         return 0;
     }
 
     if (IDM_RNG_RAND == cmd)
     {
-        ::InvalidateRect(hwnd, nullptr, TRUE);
+        ::InvalidateRect(param.hwnd(), nullptr, TRUE);
         PixelNoise::RNG_rand();
         return 0;
     }
 
     if (IDM_RNG_XORSHIFT == cmd)
     {
-        ::InvalidateRect(hwnd, nullptr, TRUE);
+        ::InvalidateRect(param.hwnd(), nullptr, TRUE);
         PixelNoise::RNG_xorshift();
         return 0;
     }
 
     if (IDM_APP_EXIT == cmd)
     {
-        ::PostMessage(hwnd, WM_CLOSE, 0, 0);
+        ::PostMessage(param.hwnd(), WM_CLOSE, 0, 0);
         return 0;
     }
 

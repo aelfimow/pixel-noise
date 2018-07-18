@@ -9,7 +9,7 @@ class WM_SIZE_Handler: public WndProcHandler
         WM_SIZE_Handler();
         ~WM_SIZE_Handler();
 
-        LRESULT operator()(HWND hwnd, WPARAM wParam, LPARAM lParam) override;
+        LRESULT operator()(const WndProcParam &param) override;
 
     public:
         WM_SIZE_Handler(const WM_SIZE_Handler &instance) = delete;
