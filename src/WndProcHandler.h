@@ -3,6 +3,8 @@
 #else
 #define WND_PROC_HANDLER_H
 
+class WndProcParam;
+
 class WndProcHandler
 {
     public:
@@ -10,6 +12,7 @@ class WndProcHandler
         virtual ~WndProcHandler() { }
 
         virtual LRESULT operator()(HWND hwnd, WPARAM wParam, LPARAM lParam) = 0;
+        virtual LRESULT operator()(const WndProcParam &param) = 0;
 
     public:
         WndProcHandler(const WndProcHandler &instance) = delete;
