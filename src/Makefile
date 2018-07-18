@@ -19,8 +19,10 @@ OBJ_FILES += g.o
 OBJ_FILES += h.o
 OBJ_FILES += i.o
 OBJ_FILES += j.o
+OBJ_FILES += k.o
 
 all:
+	${CXX} -c WndProcParam.cpp -o k.o ${CXXFLAGS}
 	${CXX} -c RNG_xorshift.cpp -o j.o ${CXXFLAGS}
 	${CXX} -c RNG_rand.cpp -o i.o ${CXXFLAGS}
 	${CXX} -c PixelNoise.cpp -o h.o ${CXXFLAGS}
