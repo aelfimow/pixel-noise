@@ -137,7 +137,11 @@ void MainWindow::Run()
     {
         MSG msg;
 
-        if (0 != ::PeekMessage(&msg, NULL, 0u, 0u, PM_REMOVE))
+        auto peekres = ::PeekMessage(&msg, NULL, 0u, 0u, PM_REMOVE);
+
+        bool isMsg = (peekres != 0);
+
+        if (isMsg)
         {
             done = (WM_QUIT == msg.message);
 
