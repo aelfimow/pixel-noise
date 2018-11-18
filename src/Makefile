@@ -9,5 +9,13 @@ CXXFLAGS += -std=c++17
 CXXFLAGS += -O2
 CXXFLAGS += -m64
 
-all:
-	${CXX} *.cpp -o pixel-noise.exe ${CXXFLAGS}
+FILES = $(wildcard *.cpp)
+FILES_OBJ = $(FILES:.cpp=.o)
+
+all: $(FILES_OBJ)
+	${CXX} *.o -o pixel-noise.exe ${CXXFLAGS}
+
+deps:
+	g++ -MM *.cpp > Makefile.files
+
+include Makefile.files

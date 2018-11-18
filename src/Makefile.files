@@ -1,0 +1,19 @@
+main.o: main.cpp MainWindow.h
+MainWindow.o: MainWindow.cpp main.h MainWindow.h WndProcParam.h \
+ WndProcHandler.h WM_SIZE_Handler.h WM_CREATE_Handler.h \
+ WM_COMMAND_Handler.h WM_DESTROY_Handler.h WM_PAINT_Handler.h \
+ PixelNoise.h
+PixelNoise.o: PixelNoise.cpp PixelNoise.h RNG.h RNG_rand.h RNG_xorshift.h
+RNG_rand.o: RNG_rand.cpp RNG.h RNG_rand.h
+RNG_xorshift.o: RNG_xorshift.cpp RNG.h RNG_xorshift.h
+WM_COMMAND_Handler.o: WM_COMMAND_Handler.cpp WndProcParam.h \
+ WndProcHandler.h WM_COMMAND_Handler.h PixelNoise.h main.h
+WM_CREATE_Handler.o: WM_CREATE_Handler.cpp WndProcParam.h \
+ WndProcHandler.h WM_CREATE_Handler.h PixelNoise.h
+WM_DESTROY_Handler.o: WM_DESTROY_Handler.cpp WndProcParam.h \
+ WndProcHandler.h WM_DESTROY_Handler.h PixelNoise.h
+WM_PAINT_Handler.o: WM_PAINT_Handler.cpp WndProcParam.h WndProcHandler.h \
+ WM_PAINT_Handler.h
+WM_SIZE_Handler.o: WM_SIZE_Handler.cpp WndProcParam.h WndProcHandler.h \
+ WM_SIZE_Handler.h PixelNoise.h
+WndProcParam.o: WndProcParam.cpp WndProcParam.h
